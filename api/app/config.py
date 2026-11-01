@@ -11,6 +11,9 @@ class Settings(BaseSettings):
     postgres_host: str = "postgres"
     postgres_port: int = 5432
 
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-2.0-flash"
+
     @property
     def db_conninfo(self) -> str:
         return make_conninfo(

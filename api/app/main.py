@@ -5,7 +5,10 @@ from fastapi import FastAPI, HTTPException
 from psycopg_pool import AsyncConnectionPool
 
 from .config import settings
+from .rag import router as rag_router
 from .triage import router as triage_router
+from .rca import router as rca_router
+from .remediation import router as remediation_router
 
 logger = logging.getLogger("api")
 
@@ -21,6 +24,9 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Network Assurance Copilot", version="0.1.0", lifespan=lifespan)
 app.include_router(triage_router)
+app.include_router(rag_router)
+app.include_router(rca_router)
+app.include_router(remediation_router)
 
 
 @app.get("/health")

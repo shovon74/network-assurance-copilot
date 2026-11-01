@@ -1,0 +1,391 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "id": 100,
+      "title": "Autonomous Network Assurance - Executive KPIs",
+      "type": "row"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "blue", "value": null }
+            ]
+          },
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 0, "y": 1 },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "values": false }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT full_accuracy AS value FROM eval_runs ORDER BY id DESC LIMIT 1;",
+          "refId": "A"
+        }
+      ],
+      "title": "RCA Accuracy (Ground Truth)",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null }
+            ]
+          },
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 4, "y": 1 },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "values": false }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT automation_rate AS value FROM eval_runs ORDER BY id DESC LIMIT 1;",
+          "refId": "A"
+        }
+      ],
+      "title": "Remediation Automation Rate",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "purple", "value": null }
+            ]
+          },
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 8, "y": 1 },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "values": false }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT mttr_reduction_pct AS value FROM eval_runs ORDER BY id DESC LIMIT 1;",
+          "refId": "A"
+        }
+      ],
+      "title": "MTTR Reduction",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "orange", "value": null }
+            ]
+          },
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 12, "y": 1 },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "values": false }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT tickets_avoided_pct AS value FROM eval_runs ORDER BY id DESC LIMIT 1;",
+          "refId": "A"
+        }
+      ],
+      "title": "Tickets Avoided (Correlation)",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "semi-dark-yellow", "value": null }
+            ]
+          },
+          "unit": "short"
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 16, "y": 1 },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "values": false }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT COUNT(*) AS value FROM actions WHERE status = 'pending_approval';",
+          "refId": "A"
+        }
+      ],
+      "title": "Pending Human Approvals",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "dark-green", "value": null }
+            ]
+          },
+          "unit": "short"
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 20, "y": 1 },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "values": false }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT COUNT(*) AS value FROM actions WHERE auto_executed = true AND post_check_passed = true;",
+          "refId": "A"
+        }
+      ],
+      "title": "Closed-Loop Autonomous Fixes",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 5 },
+      "id": 101,
+      "title": "Incident Triage & Operational Queue",
+      "type": "row"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 6 },
+      "id": 7,
+      "options": {
+        "displayLabels": ["percent", "value"],
+        "legend": { "displayMode": "table", "placement": "right", "values": ["value", "percent"] },
+        "pieType": "donut",
+        "reduceOptions": { "calcs": [], "fields": "", "values": true }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT status AS metric, count(*) AS value FROM incidents GROUP BY status;",
+          "refId": "A"
+        }
+      ],
+      "title": "Incidents by Status (Noise vs Open vs Resolved)",
+      "type": "piechart"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 6 },
+      "id": 8,
+      "options": {
+        "displayLabels": ["percent", "value"],
+        "legend": { "displayMode": "table", "placement": "right", "values": ["value", "percent"] },
+        "pieType": "donut",
+        "reduceOptions": { "calcs": [], "fields": "", "values": true }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT domain AS metric, count(*) AS value FROM incidents WHERE status != 'noise' GROUP BY domain;",
+          "refId": "A"
+        }
+      ],
+      "title": "Active Incidents by Network Domain",
+      "type": "piechart"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 6 },
+      "id": 9,
+      "options": {
+        "displayLabels": ["percent", "value"],
+        "legend": { "displayMode": "table", "placement": "right", "values": ["value", "percent"] },
+        "pieType": "donut",
+        "reduceOptions": { "calcs": [], "fields": "", "values": true }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT severity AS metric, count(*) AS value FROM incidents WHERE status != 'noise' GROUP BY severity;",
+          "refId": "A"
+        }
+      ],
+      "title": "Incident Severity Distribution",
+      "type": "piechart"
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 14 },
+      "id": 102,
+      "title": "Agentic RCA & Closed-Loop Remediation Audit",
+      "type": "row"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": { "custom": { "align": "auto", "displayMode": "auto" } }
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 15 },
+      "id": 10,
+      "options": { "footer": { "show": false }, "showHeader": true },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT r.incident_id, r.root_cause_node AS node, r.recommended_runbook AS runbook, ROUND(r.confidence::numeric, 2) AS confidence, a.latency_ms, r.created_at FROM rca_results r LEFT JOIN agent_runs a ON a.incident_id = r.incident_id ORDER BY r.created_at DESC LIMIT 15;",
+          "refId": "A"
+        }
+      ],
+      "title": "Recent Agentic RCA Diagnoses",
+      "type": "table"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": { "custom": { "align": "auto", "displayMode": "auto" } }
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 15 },
+      "id": 11,
+      "options": { "footer": { "show": false }, "showHeader": true },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "table",
+          "rawSql": "SELECT id AS action_id, incident_id, action_type, risk_level, status, auto_executed, post_check_passed, created_at FROM actions ORDER BY created_at DESC LIMIT 15;",
+          "refId": "A"
+        }
+      ],
+      "title": "Remediation Actions & Closed-Loop Post Checks",
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 23 },
+      "id": 103,
+      "title": "Network KPI Telemetry Time Series",
+      "type": "row"
+    },
+    {
+      "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "pointSize": 5,
+            "showPoints": "auto"
+          },
+          "unit": "short"
+        }
+      },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 24 },
+      "id": 12,
+      "options": {
+        "legend": { "displayMode": "table", "placement": "bottom", "values": ["last", "max", "min"] },
+        "tooltip": { "mode": "multi", "sort": "none" }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": { "type": "postgres", "uid": "copilot-postgres" },
+          "format": "time_series",
+          "rawSql": "SELECT sampled_at AS \"time\", node_id || ' - ' || metric AS metric, value FROM kpi_samples WHERE sampled_at >= (SELECT max(sampled_at) - interval '4 hours' FROM kpi_samples) AND metric IN ('dl_throughput_mbps', 'prb_utilization_pct', 'signaling_load_pct') ORDER BY 1 ASC;",
+          "refId": "A"
+        }
+      ],
+      "title": "RAN Throughput, PRB Utilization & Core MME Signaling Load",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 39,
+  "tags": ["telecom", "autonomous-operations", "copilot", "langgraph"],
+  "templating": { "list": [] },
+  "time": { "from": "now-6h", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Network Assurance Copilot - Autonomous L4 Operations",
+  "uid": "net-assurance-copilot",
+  "version": 2
+}
